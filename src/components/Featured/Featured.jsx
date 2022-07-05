@@ -5,38 +5,40 @@ const Featured = () => {
 		<div className='featured'>
 			<div className='featuredItem'>
 				<img
-					src='https://t-cf.bstatic.com/xdata/images/city/square250/620103.webp?k=c07eb50383bfb4bedd11308fb59876bff7ef522dc379f4d96a48812cecaf45eb&o='
-					alt='Featured city'
+					src='https://cf.bstatic.com/xdata/images/city/max500/957801.webp?k=a969e39bcd40cdcc21786ba92826063e3cb09bf307bcfeac2aa392b838e9b7a5&o='
+					alt=''
 					className='featuredImg'
 				/>
 				<div className='featuredTitles'>
-					<h2>Orlando</h2>
-					<h3>3,684 properties</h3>
+					<h1>Dublin</h1>
+					<h2>123 properties</h2>
+				</div>
+			</div>
+
+			<div className='featuredItem'>
+				<img
+					src='https://cf.bstatic.com/xdata/images/city/max500/690334.webp?k=b99df435f06a15a1568ddd5f55d239507c0156985577681ab91274f917af6dbb&o='
+					alt=''
+					className='featuredImg'
+				/>
+				<div className='featuredTitles'>
+					<h1>Reno</h1>
+					<h2>533 properties</h2>
 				</div>
 			</div>
 			<div className='featuredItem'>
 				<img
-					src='https://t-cf.bstatic.com/xdata/images/city/square250/856691.webp?k=9cf21942b6aa8706b8721525de6a06b55e8980139ee21f53593982a8e988a55a&o='
-					alt='Featured city'
+					src='https://cf.bstatic.com/xdata/images/city/max500/689422.webp?k=2595c93e7e067b9ba95f90713f80ba6e5fa88a66e6e55600bd27a5128808fdf2&o='
+					alt=''
 					className='featuredImg'
 				/>
 				<div className='featuredTitles'>
-					<h2>New York</h2>
-					<h3>1,381 properties</h3>
-				</div>
-			</div>
-			<div className='featuredItem'>
-				<img
-					src='https://t-cf.bstatic.com/xdata/images/city/square250/690203.webp?k=dc8f5453ce80f38f94b1575299ae214a62239fd07eb6927c1518eeb703fa56c5&o='
-					alt='Featured city'
-					className='featuredImg'
-				/>
-				<div className='featuredTitles'>
-					<h2>Myrtle Beach</h2>
-					<h3>2,642 properties</h3>
+					<h1>Austin</h1>
+					<h2>532 properties</h2>
 				</div>
 			</div>
 		</div>
 	);
 };
+
 export default Featured;
