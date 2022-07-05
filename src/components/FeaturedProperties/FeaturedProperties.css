@@ -9,13 +9,16 @@
 .fpItem {
 	flex: 1;
 	gap: 10px;
+	width: 100%;
 	display: flex;
 	flex-direction: column;
+	overflow: hidden;
 }
 
 .fpImg {
 	width: 100%;
 	height: 210px;
+	object-fit: cover;
 }
 
 .fpName {
