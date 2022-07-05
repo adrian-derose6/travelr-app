@@ -6,6 +6,7 @@ import { format } from 'date-fns';
 import Navbar from '../../components/Navbar/Navbar';
 import Header from '../../components/Header/Header';
 import './List.css';
+import SearchItem from '../../components/SearchItem/SearchItem';
 
 const List = () => {
 	const location = useLocation();
@@ -86,7 +87,16 @@ const List = () => {
 						</div>
 						<button>Search</button>
 					</div>
-					<div className='listResults'></div>
+					<div className='listResults'>
+						<SearchItem />
+						<SearchItem />
+						<SearchItem />
+						<SearchItem />
+						<SearchItem />
+						<SearchItem />
+						<SearchItem />
+						<SearchItem />
+					</div>
 				</div>
 			</div>
 		</div>
