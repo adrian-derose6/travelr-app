@@ -8,6 +8,7 @@
 .navContainer {
 	width: 100%;
 	max-width: 1024px;
+	padding-top: 15px;
 	color: white;
 	display: flex;
 	align-items: center;
@@ -16,6 +17,11 @@
 
 .logo {
 	font-weight: 500;
+	font-size: 24px;
+	gap: 10px;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
 }
 
 .navButton {
