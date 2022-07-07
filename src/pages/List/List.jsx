@@ -5,8 +5,10 @@ import { format } from 'date-fns';
 
 import Navbar from '../../components/Navbar/Navbar';
 import Header from '../../components/Header/Header';
-import './List.css';
 import SearchItem from '../../components/SearchItem/SearchItem';
+import { API_URL } from '../../config/env-vars';
+import useFetch from '../../hooks/useFetch';
+import './List.css';
 
 const List = () => {
 	const location = useLocation();
@@ -14,6 +16,10 @@ const List = () => {
 	const [date, setDate] = useState(location.state.date);
 	const [openDate, setOpenDate] = useState(false);
 	const [options, setOptons] = useState(location.state.options);
+
+	const { data, loading, error, refetch } = useFetch(
+		`${API_URL}/hotels?city=${destination}`
+	);
 
 	return (
 		<div>
@@ -88,14 +94,15 @@ const List = () => {
 						<button>Search</button>
 					</div>
 					<div className='listResults'>
-						<SearchItem />
-						<SearchItem />
-						<SearchItem />
-						<SearchItem />
-						<SearchItem />
-						<SearchItem />
-						<SearchItem />
-						<SearchItem />
+						{loading ? (
+							'Loading...'
+						) : (
+							<>
+								{data.map((item) => (
+									<SearchItem item={item} key={item._id} />
+								))}
+							</>
+						)}
 					</div>
 				</div>
 			</div>
