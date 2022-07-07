@@ -22,8 +22,8 @@ const Featured = () => {
 							className='featuredImg'
 						/>
 						<div className='featuredTitles'>
-							<h1>Berlin</h1>
-							<h2>{data[0]} properties</h2>
+							<h2>Berlin</h2>
+							<h3>{data[0]} properties</h3>
 						</div>
 					</div>
 
@@ -34,8 +34,8 @@ const Featured = () => {
 							className='featuredImg'
 						/>
 						<div className='featuredTitles'>
-							<h1>Madrid</h1>
-							<h2>{data[1]} properties</h2>
+							<h2>Madrid</h2>
+							<h3>{data[1]} properties</h3>
 						</div>
 					</div>
 					<div className='featuredItem'>
@@ -45,8 +45,8 @@ const Featured = () => {
 							className='featuredImg'
 						/>
 						<div className='featuredTitles'>
-							<h1>London</h1>
-							<h2>{data[3]} properties</h2>
+							<h2>London</h2>
+							<h3>{data[2]} properties</h3>
 						</div>
 					</div>
 				</>
