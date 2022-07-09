@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
 	faCircleArrowLeft,
@@ -10,9 +10,11 @@ import {
 
 import Navbar from '../../components/Navbar/Navbar';
 import Header from '../../components/Header/Header';
+import Reserve from '../../components/Reserve/Reserve';
 import MailList from '../../components/MailList/MailList';
 import Footer from '../../components/Footer/Footer';
 import useFetch from '../../hooks/useFetch';
+import { useAuth } from '../../context/AuthContext';
 import { useSearchContext } from '../../context/SearchContext';
 import { API_URL } from '../../config/env-vars';
 import './Hotel.css';
@@ -25,7 +27,9 @@ const Hotel = () => {
 	const [openModal, setOpenModal] = useState(false);
 
 	const { data, loading, error } = useFetch(`${API_URL}/hotels/${id}`);
+	const { user } = useAuth();
 	const { dates, options } = useSearchContext();
+	const navigate = useNavigate();
 
 	const MILLISECONDS_PER_DAY = 1000 * 60 * 60 * 24;
 	function dayDifference(date1, date2) {
@@ -53,7 +57,13 @@ const Hotel = () => {
 		setSlideNumber(newSlideNumber);
 	};
 
-	const handleClick = () => {};
+	const handleClick = () => {
+		if (user) {
+			setOpenModal(true);
+		} else {
+			navigate('/login');
+		}
+	};
 
 	const photos = [
 		{
@@ -155,7 +165,7 @@ const Hotel = () => {
 							</div>
 						</div>
 					</div>
-
+					{openModal && <Reserve setOpen={setOpen} hotelId={id} />}
 					<MailList />
 					<Footer />
 				</div>
