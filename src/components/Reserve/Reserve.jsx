@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 import { faCircleXmark } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
@@ -13,6 +15,7 @@ const Reserve = ({ setOpen, hotelId }) => {
 		`${API_URL}/hotels/${hotelId}/rooms`
 	);
 	const { dates } = useSearchContext();
+	const navigate = useNavigate();
 
 	const getDatesInRange = (startDate, endDate) => {
 		const start = new Date(startDate);
@@ -47,7 +50,20 @@ const Reserve = ({ setOpen, hotelId }) => {
 		);
 	};
 
-	const handleClick = (e) => {};
+	const handleClick = async () => {
+		try {
+			await Promise.all(
+				selectedRooms.map((roomId) => {
+					const res = axios.put(`${API_URL}/rooms/availability/${roomId}`, {
+						dates: allDates,
+					});
+					return res.data;
+				})
+			);
+			setOpen(false);
+			navigate('/');
+		} catch (err) {}
+	};
 
 	return (
 		<div className='reserve'>
@@ -68,17 +84,19 @@ const Reserve = ({ setOpen, hotelId }) => {
 							</div>
 							<div className='rPrice'>{item.price}</div>
 						</div>
-						{item.roomNumbers.map((roomNumber) => (
-							<div className='room'>
-								<label>{roomNumber.number}</label>
-								<input
-									type='checkbox'
-									value={roomNumber._id}
-									onChange={handleChecked}
-									disabled={!isAvailable(roomNumber)}
-								/>
-							</div>
-						))}
+						<div className='rSelectRooms'>
+							{item.roomNumbers.map((roomNumber) => (
+								<div className='room'>
+									<label>{roomNumber.number}</label>
+									<input
+										type='checkbox'
+										value={roomNumber._id}
+										onChange={handleChecked}
+										disabled={!isAvailable(roomNumber)}
+									/>
+								</div>
+							))}
+						</div>
 					</div>
 				))}
 				<button onClick={handleClick} className='rButton'>
